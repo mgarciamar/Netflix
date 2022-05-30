@@ -12,35 +12,64 @@ public class Title {
     @NotNull
     private @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
-    private String title;
 
-    private String country;
-
-    private String date_added;
+    private String rating;
 
     @Override
     public String toString() {
         return "Title{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", country='" + country + '\'' +
-                ", date_added='" + date_added + '\'' +
-                ", release_year='" + release_year + '\'' +
                 ", rating='" + rating + '\'' +
                 ", duration='" + duration + '\'' +
                 ", description='" + description + '\'' +
                 ", directorList=" + directorList +
                 ", actorList=" + actorList +
                 ", categoryList=" + categoryList +
+                ", name='" + name + '\'' +
+                ", date_added='" + date_added + '\'' +
+                ", num_ratings=" + num_ratings +
+                ", user_rating=" + user_rating +
+                ", release_year='" + release_year + '\'' +
                 '}';
     }
 
+    public int getNum_ratings() {
+        return num_ratings;
+    }
+
+    public void setNum_ratings(int num_ratings) {
+        this.num_ratings = num_ratings;
+    }
+
+    public float getUser_rating() {
+        return user_rating;
+    }
+
+    public void setUser_rating(float user_rating) {
+        this.user_rating = user_rating;
+    }
+
+    private String duration;
+
+    private String description;
+    @ManyToMany(mappedBy = "titleList")
+    private List<Director> directorList;
+
+    @ManyToMany(mappedBy = "titleList")
+    private List<Actor> actorList;
+    @ManyToMany(mappedBy = "titleList")
+    private List<Category> categoryList;
+    private String name;
+
+    private String date_added;
+    private int num_ratings;
+    private float user_rating;
+
     private String release_year;
 
-    public Title(Long id, String title, String country, String date_added, String release_year, String rating, String duration, String description, List<Director> directorList, List<Actor> actorList, List<Category> categoryList) {
+    public Title(Long id, String title, String date_added, String release_year, String rating, String duration, String description, List<Director> directorList, List<Actor> actorList, List<Category> categoryList) {
         this.id = id;
-        this.title = title;
-        this.country = country;
+        this.name = title;
         this.date_added = date_added;
         this.release_year = release_year;
         this.rating = rating;
@@ -51,21 +80,15 @@ public class Title {
         this.categoryList = categoryList;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getDate_added() {
         return date_added;
@@ -131,20 +154,7 @@ public class Title {
         this.categoryList = categoryList;
     }
 
-    private String rating;
 
-    private String duration;
-
-    private String description;
-    @ManyToMany(mappedBy = "titleList")
-    private List<Director> directorList;
-
-    @ManyToMany(mappedBy = "titleList")
-    private List<Actor> actorList;
-
-
-    @ManyToMany(mappedBy = "titleList")
-    private List<Category> categoryList;
 
 
 
@@ -154,7 +164,7 @@ public class Title {
 
     public Title(Long id, String name) {
         this.id = id;
-        this.title = name;
+        this.name = name;
     }
 
     public void addDirector(Director director){
@@ -173,11 +183,5 @@ public class Title {
         this.id = id;
     }
 
-    public String getName() {
-        return title;
-    }
 
-    public void setName(String name) {
-        this.title = name;
-    }
 }
