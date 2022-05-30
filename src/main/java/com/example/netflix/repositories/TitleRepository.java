@@ -13,4 +13,13 @@ import java.util.List;
 public interface TitleRepository extends PagingAndSortingRepository<Title, Long> {
     @Query(value = "SELECT * FROM title  t ORDER BY t.user_rating DESC", nativeQuery = true)
     List<Title> findTopRating(PageRequest pageRequest);
+
+    @Query(value = "select t.*, c.name\n" +
+            "from title t\n" +
+            "inner join title_category tc on t.id = tc.title_id\n" +
+            "inner join category c on tc.category_id = c.id\n" +
+            "where c.id=?1\n" +
+            "order by t.user_rating desc;", nativeQuery = true)
+    List<Title> findTopRatingCategory(PageRequest pageRequest, Integer id);
+
 }

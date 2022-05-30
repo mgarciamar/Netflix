@@ -17,4 +17,11 @@ public class TitleController {
     Object best(@RequestParam(defaultValue =  "10") Integer top) {
         return repository.findTopRating(PageRequest.of(0,top));
     }
+
+    @GetMapping("/category/{id}")
+    Object top(@RequestParam(defaultValue =  "10") Integer top) {
+        return repository.findTopRatingCategory(PageRequest.of(0,top),2);
+    }
+
+
 }
