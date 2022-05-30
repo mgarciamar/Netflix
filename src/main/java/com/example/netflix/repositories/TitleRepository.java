@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "titles", path = "titles")
+@RepositoryRestResource(collectionResourceRel = "titles", path = "title")
 public interface TitleRepository extends PagingAndSortingRepository<Title, Long> {
     @Query(value = "SELECT * FROM title  t ORDER BY t.user_rating DESC", nativeQuery = true)
     List<Title> findTopRating(PageRequest pageRequest);
