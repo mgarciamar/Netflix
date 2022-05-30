@@ -19,7 +19,7 @@ public interface TitleRepository extends PagingAndSortingRepository<Title, Long>
             "inner join title_category tc on t.id = tc.title_id\n" +
             "inner join category c on tc.category_id = c.id\n" +
             "where c.id=?1\n" +
-            "order by t.user_rating desc;", nativeQuery = true)
+            "order by t.user_rating desc", nativeQuery = true)
     List<Title> findTopRatingCategory(PageRequest pageRequest, Integer id);
 
 }
