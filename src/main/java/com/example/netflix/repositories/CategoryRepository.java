@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "category", path = "category")
+@RepositoryRestResource(collectionResourceRel = "categories", path = "category")
 public interface CategoryRepository extends PagingAndSortingRepository<Category, Long> {
 
 

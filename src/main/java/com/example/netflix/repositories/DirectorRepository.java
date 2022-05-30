@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "director", path = "director")
+@RepositoryRestResource(collectionResourceRel = "directors", path = "director")
 public interface DirectorRepository extends PagingAndSortingRepository<Director, Long> {
 
 
