@@ -136,14 +136,17 @@ public class Title {
     private String duration;
 
     private String description;
-    @ManyToMany(mappedBy = "director")
+    @ManyToMany(mappedBy = "titleList")
     private List<Director> directorList;
 
-    @ManyToMany(mappedBy = "title")
+    @ManyToMany(mappedBy = "titleList")
     private List<Actor> actorList;
 
-    @ManyToMany(mappedBy = "listed_in")
+
+    @ManyToMany(mappedBy = "titleList")
     private List<Category> categoryList;
+
+
 
 
     public Title() {

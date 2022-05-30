@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "director")
 public class Director {
 
     @NotNull
@@ -13,9 +14,9 @@ public class Director {
     private String name;
 
     @JoinTable(
-            name = "rel_director_title",
-            joinColumns = @JoinColumn(name = "director", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="title", nullable = false)
+            name = "title_director",
+            joinColumns = @JoinColumn(name = "director_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="title_id", nullable = false)
     )
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Title> titleList;

@@ -2,18 +2,24 @@ package com.example.netflix.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "category")
 public class Category {
     @NotNull
     private @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String name;
 
+    @JoinTable(
+            name = "title_category",
+            joinColumns = @JoinColumn(name = "category_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="title_id", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Title> titleList;
     public Category() {
     }
 
