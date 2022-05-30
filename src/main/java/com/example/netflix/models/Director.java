@@ -11,6 +11,8 @@ public class Director {
 
     @NotNull
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+
+    @NotNull
     private String name;
 
     @JoinTable(
