@@ -3,6 +3,8 @@ package com.example.netflix.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +64,11 @@ public class Title {
     private String name;
 
     private String date_added;
+    @Min(0)
+    @Max(10)
     private int num_ratings;
+
+    @Min(0)
     private float user_rating;
 
     private String release_year;
